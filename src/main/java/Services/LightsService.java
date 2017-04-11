@@ -27,17 +27,17 @@ public class LightsService extends Service {
     }
     
     @Override
-    public void performAction(String o){
-        if (o.equals("get_status")){
+    public void performAction(String a){
+        if (a.equals("get_status")){
             sendBack(getStatus());
         }
-        else if(o.equals("On")){
+        else if(a.equals("On")){
             timer.schedule(new RemindTask(), 0, 2000);
             sendBack("OK!");
             ui.updateArea("Reducing lights energy use");
         }
         else{
-            sendBack(BAD_COMMAND + " - " + o);
+            sendBack(BAD_COMMAND + " - " + a);
         }
         
     }
