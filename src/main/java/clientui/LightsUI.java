@@ -16,9 +16,9 @@ import client.LightsClient;
 public class LightsUI extends ClientUI{
     
     private static final long serialVersionUID = -5318589393275157185L;
-    private JButton turnOn;
-    private JButton on;
+    private JButton reducing;
     private JButton off;
+    private JButton on;
     private final LightsClient parent;
     
     public LightsUI(LightsClient lightsClient){
@@ -31,9 +31,13 @@ public class LightsUI extends ClientUI{
     public void init(){
         super.init();
         
-        on = new JButton("Reduce Energy usage");
+        on = new JButton("Turn On");
         scroll.setBounds(5, 40, UIConstants.COMPONENTWIDTH, 300);
         add(new JButton[]{on});
+        
+        reducing = new JButton("Reduce Energy usage");
+        scroll.setBounds(5, 40, UIConstants.COMPONENTWIDTH, 300);
+        add(new JButton[]{reducing});
         
         off = new JButton("Turn Off");
         scroll.setBounds(5, 40, UIConstants.COMPONENTWIDTH, 300);
@@ -44,7 +48,10 @@ public class LightsUI extends ClientUI{
     
     @Override
     public void actionPerformed(ActionEvent e){
-        if (e.getSource() == on){
+        if (e.getSource() == reducing){
+            parent.reducing();
+        }
+        else if(e.getSource() == on){
             parent.on();
         }
         else if(e.getSource() == off){

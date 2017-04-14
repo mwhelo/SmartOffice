@@ -30,10 +30,14 @@ public class PrinterService extends Service{
         if(a.equals("get_status")){
             sendBack(getStatus());
         }
-        else if(a.equals("Check queue length")){
+        else if(a.equals("On")){
             timer.schedule(new QueueTask(),0, 2000);
-            sendBack("OK!");
+            sendBack("OK");
             ui.updateArea("Checking Queue Length..");
+        }
+        else if(a.equals("Check")){
+            sendBack("OK");
+            ui.updateArea("checking Queue Lenght");
         }
         else{
             sendBack(BAD_COMMAND + " - " + a);

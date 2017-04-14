@@ -17,7 +17,7 @@ import ServiceUI.ServiceUI;
 public class LightsService extends Service {
     
     private final Timer timer;
-    private int wattsUsed;
+    public static int wattsUsed;
     
     public LightsService(String name){
         super(name, "_lights._udp.local.");
@@ -32,9 +32,17 @@ public class LightsService extends Service {
             sendBack(getStatus());
         }
         else if(a.equals("On")){
-            timer.schedule(new RemindTask(), 0, 2000);
-            sendBack("OK!");
+            sendBack("OK");
+            ui.updateArea("The lights are now on");
+        }
+        else if(a.equals("Reducing")){
+            timer.schedule(new ReduceEnergy(), 0, 2000);
+            sendBack("OK");
             ui.updateArea("Reducing lights energy use");
+        }
+        else if(a.equals("Off")){
+            sendBack("OK");
+            ui.updateArea("The lights are now off!");
         }
         else{
             sendBack(BAD_COMMAND + " - " + a);
@@ -42,7 +50,7 @@ public class LightsService extends Service {
         
     }
         
-        class RemindTask extends TimerTask{
+        class ReduceEnergy extends TimerTask{
             @Override
             public void run(){
                 if(wattsUsed > 14){
