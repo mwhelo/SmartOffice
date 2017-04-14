@@ -12,10 +12,10 @@ import clientui.PrinterUI;
  */
 public class PrinterClient extends Client {
     
-    private final String ON = "ON";
+    private final String on = "On";
     private final String check = "Check";
     private boolean isOn = false;
-    private boolean printing = false;
+    private boolean printing;
    
     
     public PrinterClient(){
@@ -27,8 +27,8 @@ public class PrinterClient extends Client {
     
     public void on(){
         if(!isOn){
-            String o = sendMessage(ON);
-            if(o.equals(OK)){
+            String a = sendMessage(on);
+            if(a.equals(OK)){
                 isOn = true;
                 ui.updateArea("Printer is on!");
             }
@@ -40,8 +40,8 @@ public class PrinterClient extends Client {
     
     public void check(){
         if(!printing){
-            String o = sendMessage(check);
-            if(o.equals(OK)){
+            String a = sendMessage(check);
+            if(a.equals(OK)){
                 printing = true;
                 ui.updateArea("Printing documents");
             }

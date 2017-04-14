@@ -43,14 +43,12 @@ public class PrinterUI extends ClientUI{
         if (e.getSource() == on) {
             parent.on();
         } 
+        
+        else if(e.getSource() == check){
+            parent.check();
+        }
        
     }
     
-    public void actionPerformed1(ActionEvent f) {
-        if(f.getSource() == check){
-            parent.check();
-        } 
-       
-    }
     
 }

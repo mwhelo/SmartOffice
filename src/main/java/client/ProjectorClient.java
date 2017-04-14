@@ -43,7 +43,7 @@ public class ProjectorClient extends Client {
         if(isOff){
             String a = sendMessage(off);
             if(a.equals(OK)){
-                isOff = true;
+                isOff = false;
                 ui.updateArea("Projector turned off");
             }
         }else {

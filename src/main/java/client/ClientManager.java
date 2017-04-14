@@ -26,7 +26,6 @@ public class ClientManager implements ServiceListener {
     private final ClientManagerUI ui;
     private JmDNS jmdns;
     private final LightsClient client = new LightsClient();
-    private final PrinterClient client1 = new PrinterClient();
 
     public ClientManager() {
         try {

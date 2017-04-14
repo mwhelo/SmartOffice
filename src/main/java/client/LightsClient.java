@@ -13,8 +13,11 @@ import clientui.LightsUI;
  */
 public class LightsClient extends Client {
     
-    private final String ON = "ON";
+    private final String on = "On";
+    private final String off = "Off";
     private boolean isOn = false;
+    private boolean isOff = false;
+   
     
     public LightsClient(){
         super();
@@ -25,8 +28,8 @@ public class LightsClient extends Client {
     
     public void on(){
         if (!isOn){
-            String o = sendMessage(ON);
-            if (o.equals(OK)){
+            String a = sendMessage(on);
+            if (a.equals(OK)){
                 isOn = true;
                 ui.updateArea("Lights are On!");
             }
@@ -36,10 +39,27 @@ public class LightsClient extends Client {
         }
     }
     
+    public void off(){
+        if(!isOff){
+            String a = sendMessage(off);
+            if(a.equals(OK)){
+                isOff = true;
+                ui.updateArea("Lights are Off!");
+            }
+        }
+        else{
+            ui.updateArea("Lights are already off");
+        }
+    }
+    
+    
     @Override
     public void updatePoll(String msg){
         if(msg.equals("Lights are on")){
             isOn = false;
+        }
+        else if(msg.equals("Lights are off")){
+            isOff = true;
         }
     }
     
@@ -48,6 +68,7 @@ public class LightsClient extends Client {
         super.disable();
         ui = new LightsUI(this);
         isOn = false;
+        
     }
     
 }
