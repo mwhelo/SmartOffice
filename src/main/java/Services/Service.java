@@ -127,6 +127,7 @@ public abstract class Service extends Thread{
     }
 
     protected abstract void performAction(String a);
+    
 
     public static int findFreePort() throws IOException {
         ServerSocket server = new ServerSocket(0);
@@ -136,5 +137,6 @@ public abstract class Service extends Thread{
     }
 
     public abstract String getStatus();
+    
     
 }
