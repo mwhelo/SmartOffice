@@ -57,6 +57,10 @@ public class ClientManagerUI extends JFrame{
     public void addPanel(JPanel a, String name) {
         allPanels.addTab(name, a);
     }
+    
+    public void addPanel1(JPanel b, String name){
+        allPanels.addTab(name, b);
+    }
 
     public void removePanel(JPanel returnUI) {
         allPanels.remove(returnUI);
