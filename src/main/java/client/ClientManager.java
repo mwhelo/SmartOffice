@@ -25,7 +25,8 @@ public class ClientManager implements ServiceListener {
 
     private final ClientManagerUI ui;
     private JmDNS jmdns;
-    private final LightsClient client = new LightsClient();
+    private final LightsClient client1 = new LightsClient();
+    private final PrinterClient client = new PrinterClient();
 
     public ClientManager() {
         try {
@@ -49,6 +50,7 @@ public class ClientManager implements ServiceListener {
     public void serviceAdded(ServiceEvent arg0) {
         System.out.println(arg0);
         arg0.getDNS().requestServiceInfo(arg0.getType(), arg0.getName(), 0);
+        
     }
 
     public void serviceRemoved(ServiceEvent arg0) {

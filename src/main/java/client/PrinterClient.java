@@ -15,7 +15,7 @@ public class PrinterClient extends Client {
     private final String on = "On";
     private final String check = "Check";
     private boolean isOn = false;
-    private boolean printing;
+    private boolean printing = false;
    
     
     public PrinterClient(){
@@ -68,7 +68,6 @@ public class PrinterClient extends Client {
         super.disable();
         ui = new PrinterUI(this);
         isOn = false;
-        printing = false;
     }
     
 }
