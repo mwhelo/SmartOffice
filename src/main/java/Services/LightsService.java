@@ -22,7 +22,7 @@ public class LightsService extends Service {
     public LightsService(String name){
         super(name, "_lights._udp.local.");
         timer = new Timer();
-        wattsUsed = 100;
+        wattsUsed = 17;
         ui = new ServiceUI(this, name);
     }
     
@@ -54,7 +54,7 @@ public class LightsService extends Service {
             @Override
             public void run(){
                 if(wattsUsed > 14){
-                    wattsUsed -=5;
+                    wattsUsed -=1;
                 }
             }
         }

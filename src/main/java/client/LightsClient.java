@@ -61,7 +61,7 @@ public class LightsClient extends Client {
         if(!isOff){
             String a = sendMessage(off);
             if(a.equals(OK)){
-                isOff = true;
+                isOff = false;
                 ui.updateArea("Lights are Off!");
             }
         }
@@ -86,6 +86,8 @@ public class LightsClient extends Client {
         super.disable();
         ui = new LightsUI(this);
         isReducing = false;
+        isOn = false;
+        isOff = true;
         
     }
     

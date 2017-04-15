@@ -24,12 +24,12 @@ public class LightsUI extends ClientUI{
     public LightsUI(LightsClient lightsClient){
         super(lightsClient);
         parent = lightsClient;
-        init();
+        gui();
     }
     
     @Override
-    public void init(){
-        super.init();
+    public void gui(){
+        super.gui();
         
         on = new JButton("Turn On");
         scroll.setBounds(5, 40, UIConstants.COMPONENTWIDTH, 300);

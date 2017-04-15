@@ -25,12 +25,12 @@ public class ProjectorUI  extends ClientUI {
     public ProjectorUI(ProjectorClient projectorClient) {
         super(projectorClient);
         parent = projectorClient;
-        init();
+        gui();
     }
 
     @Override
-    public void init() {
-        super.init();
+    public void gui() {
+        super.gui();
         on = new JButton("On");
         scroll.setBounds(5, 40, UIConstants.COMPONENTWIDTH, 300);
         add(new JButton[]{on});

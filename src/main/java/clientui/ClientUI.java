@@ -38,7 +38,7 @@ public abstract class ClientUI extends JPanel implements ActionListener {
         p = a;
     }
 
-    public void init() {
+    public void gui() {
         setLayout(null);
         services = new JComboBox();
         services.addActionListener(actionListener);
@@ -84,7 +84,7 @@ public abstract class ClientUI extends JPanel implements ActionListener {
 
     public void refresh(Vector<String> a) {
         this.removeAll();
-        init();
+        gui();
         addChoices(a);
     }
 

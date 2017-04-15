@@ -16,36 +16,36 @@ import client.PrinterClient;
 public class PrinterUI extends ClientUI{
     
      private static final long serialVersionUID = -4318589393275157185L;
-    private JButton on;
     private JButton check;
+    private JButton print;
     private final PrinterClient parent;
 
     public PrinterUI(PrinterClient printerClient) {
         super(printerClient);
         parent = printerClient;
-        init();
+        gui();
     }
 
     @Override
-    public void init() {
-        super.init();
-        on = new JButton("Check Queue");
-        scroll.setBounds(5, 40, UIConstants.COMPONENTWIDTH, 300);
-        add(new JButton[]{on});
-        
-        check = new JButton("Start Printing Queuein");
+    public void gui() {
+        super.gui();
+        check = new JButton("Check Queue");
         scroll.setBounds(5, 40, UIConstants.COMPONENTWIDTH, 300);
         add(new JButton[]{check});
+        
+        print = new JButton("Start Printing Queuein");
+        scroll.setBounds(5, 40, UIConstants.COMPONENTWIDTH, 300);
+        add(new JButton[]{print});
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == on) {
-            parent.on();
+        if (e.getSource() == check) {
+            parent.check();
         } 
         
-        else if(e.getSource() == check){
-            parent.check();
+        else if(e.getSource() == print){
+            parent.print();
         }
        
     }

@@ -21,7 +21,7 @@ public class PrinterService extends Service{
     public PrinterService(String name){
         super(name, "_printer._udp.local.");
         timer = new Timer();
-        queueLength = 6;
+        queueLength = 4;
         ui = new ServiceUI(this, name);
     }
     
@@ -30,14 +30,14 @@ public class PrinterService extends Service{
         if(a.equals("get_status")){
             sendBack(getStatus());
         }
-        else if(a.equals("On")){
-            timer.schedule(new QueueTask(),0, 2000);
+        else if(a.equals("Check")){
+            new QueueTask();
             sendBack("OK");
             ui.updateArea("Checking Queue Length..");
         }
-        else if(a.equals("Check")){
+        else if(a.equals("Print")){
             sendBack("OK");
-            ui.updateArea("checking Queue Lenght");
+            ui.updateArea("Printing documents...");
         }
         else{
             sendBack(BAD_COMMAND + " - " + a);
