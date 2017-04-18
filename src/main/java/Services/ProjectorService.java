@@ -15,10 +15,11 @@ import java.util.TimerTask;
  */
 public class ProjectorService extends Service {
     
-    private final Timer timer;
+     private final Timer timer;
+    private boolean on;
+    private boolean off;
     private boolean HDMI;
     private boolean VGA;
-    private boolean on;
     
     public ProjectorService(String name){
         super(name, "_projector._upd.local.");
@@ -35,7 +36,23 @@ public class ProjectorService extends Service {
             sendBack("OK");
             ui.updateArea("projector turned on");
             
-        }else{
+        }
+        
+        else if (a.equals("Off")){
+            sendBack("OK");
+            ui.updateArea("projector turned off");
+            
+        }
+        else if(a.equals("Hdmi")){
+            sendBack("OK");
+            ui.updateArea("Connection established via HDMI");
+        }
+        
+        else if(a.equals("Vga")){
+            sendBack("OK");
+            ui.updateArea("Connection established via VGA");
+        }
+        else{
             sendBack(BAD_COMMAND + " - " + a);
         }
     }
@@ -54,7 +71,7 @@ public class ProjectorService extends Service {
     
     @Override 
     public String getStatus(){
-        return "Projector now connected via" + HDMI + ".";
+        return "Select your projector connection type";
     }
     
     public static void main(String[] args){

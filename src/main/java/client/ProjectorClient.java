@@ -16,7 +16,11 @@ public class ProjectorClient extends Client {
     private final String on = "On";
     private final String off = "Off";
     private boolean isOn = false;
-    private boolean isOff;
+    private boolean isOff = false;
+    private final String HDMI = "Hdmi";
+    private final String VGA = "Vga";
+    private boolean isHdmi = false;
+    private boolean isVga = false;
    
     
     public ProjectorClient(){
@@ -40,14 +44,38 @@ public class ProjectorClient extends Client {
     }
     
     public void off(){
-        if(isOff){
+        if(!isOff){
             String a = sendMessage(off);
             if(a.equals(OK)){
-                isOff = false;
+                isOff = true;
                 ui.updateArea("Projector turned off");
             }
         }else {
             ui.updateArea("Projector already off");
+        }
+    }
+    
+    public void hdmi(){
+        if(!isHdmi){
+            String a = sendMessage(HDMI);
+            if(a.equals(OK)){
+                isHdmi = true;
+                ui.updateArea("Projector connected via HDMI");
+            }
+        }else {
+            ui.updateArea("Projector already connected");
+        }
+    }
+    
+    public void vga(){
+        if(!isVga){
+            String a = sendMessage(VGA);
+            if(a.equals(OK)){
+                isVga = true;
+                ui.updateArea("Projector connected via VGA");
+            }
+        }else {
+            ui.updateArea("Projector already connected");
         }
     }
     
@@ -59,6 +87,15 @@ public class ProjectorClient extends Client {
         else if(msg.equals("Projector turned off")){
            isOff = true;
     }
+        else if(msg.equals("Projector connected via HDMI")){
+            isHdmi = true;
+            
+        }
+        
+        else if(msg.equals("Projector connected via VGA")){
+            isVga = true;
+            
+        }
     }
     
 

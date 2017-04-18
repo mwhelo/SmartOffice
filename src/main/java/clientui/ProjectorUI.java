@@ -54,6 +54,13 @@ public class ProjectorUI  extends ClientUI {
         else if(e.getSource() == off){
         parent.off();
     }
+        else if(e.getSource() == HDMI){
+        parent.hdmi();
+    }
+        else if(e.getSource() == VGA){
+        parent.vga();
+    }
+        
     }
     
 }
