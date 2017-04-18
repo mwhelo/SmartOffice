@@ -28,6 +28,7 @@ public class ClientManager implements ServiceListener {
     private final LightsClient client = new LightsClient();
     private final PrinterClient client1 = new PrinterClient();
     private final ProjectorClient client2 = new ProjectorClient();
+    private final MonitorClient client3 = new MonitorClient();
 
     public ClientManager() {
         try {
@@ -35,6 +36,7 @@ public class ClientManager implements ServiceListener {
             jmdns.addServiceListener(client.getServiceType(), this);
             jmdns.addServiceListener(client1.getServiceType(), this);
             jmdns.addServiceListener(client2.getServiceType(), this);
+            jmdns.addServiceListener(client3.getServiceType(), this);
             
 
         } catch (IOException e) {
@@ -81,7 +83,7 @@ public class ClientManager implements ServiceListener {
         }
         
         //PrinterClient
-        else if (client1.getServiceType().equals(type) && client1.hasMultiple()) {
+        if (client1.getServiceType().equals(type) && client1.hasMultiple()) {
             if (client1.isCurrent(name)) {
                 ServiceInfo[] a = jmdns.list(type);
                 for (ServiceInfo in : a) {
@@ -99,7 +101,7 @@ public class ClientManager implements ServiceListener {
         }
         
         //Projector
-        else if (client2.getServiceType().equals(type) && client2.hasMultiple()) {
+        if (client2.getServiceType().equals(type) && client2.hasMultiple()) {
             if (client2.isCurrent(name)) {
                 ServiceInfo[] a = jmdns.list(type);
                 for (ServiceInfo in : a) {
@@ -114,6 +116,24 @@ public class ClientManager implements ServiceListener {
             ui.removePanel(client2.returnUI());
             client2.disable();
             client2.initialized = false;
+        }
+        
+        //Monitor
+        if (client3.getServiceType().equals(type) && client3.hasMultiple()) {
+            if (client3.isCurrent(name)) {
+                ServiceInfo[] a = jmdns.list(type);
+                for (ServiceInfo in : a) {
+                    if (!in.getName().equals(name)) {
+                        newService = in;
+                    }
+                }
+                client3.switchService(newService);
+            }
+            client3.remove(name);
+        } else if (client3.getServiceType().equals(type)) {
+            ui.removePanel(client3.returnUI());
+            client3.disable();
+            client3.initialized = false;
         }
     }
     
@@ -135,7 +155,7 @@ public class ClientManager implements ServiceListener {
         }
         
         //PrinterClient
-        else if (client1.getServiceType().equals(type) && !client1.isInitialized()) {
+        if (client1.getServiceType().equals(type) && !client1.isInitialized()) {
             client1.setUp(address, port);
             ui.addPanel(client1.returnUI(), client1.getName());
             client1.setCurrent(arg0.getInfo());
@@ -147,7 +167,7 @@ public class ClientManager implements ServiceListener {
         }
         
         //ProjectorClient
-        else if (client2.getServiceType().equals(type) && !client2.isInitialized()) {
+        if (client2.getServiceType().equals(type) && !client2.isInitialized()) {
             client2.setUp(address, port);
             ui.addPanel(client2.returnUI(), client2.getName());
             client2.setCurrent(arg0.getInfo());
@@ -157,6 +177,19 @@ public class ClientManager implements ServiceListener {
             client2.addChoice(arg0.getInfo());
 
         }
+        
+        //MonitorClient
+        if (client3.getServiceType().equals(type) && !client3.isInitialized()) {
+            client3.setUp(address, port);
+            ui.addPanel(client3.returnUI(), client3.getName());
+            client3.setCurrent(arg0.getInfo());
+            client3.addChoice(arg0.getInfo());
+        } else if (client3.getServiceType().equals(type)
+                && client3.isInitialized()) {
+            client3.addChoice(arg0.getInfo());
+
+        }
+        
     }
 
     public static void main(String[] args) {
