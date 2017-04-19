@@ -26,6 +26,7 @@ public class PrinterUI extends ClientUI{
         gui();
     }
 
+    //adds buttons to gui
     @Override
     public void gui() {
         super.gui();
@@ -38,6 +39,8 @@ public class PrinterUI extends ClientUI{
         add(new JButton[]{print});
     }
 
+    
+    //matches buttons to their action performed methods
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == check) {

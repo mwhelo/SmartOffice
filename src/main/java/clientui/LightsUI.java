@@ -27,6 +27,7 @@ public class LightsUI extends ClientUI{
         gui();
     }
     
+    //adds buttons to gui
     @Override
     public void gui(){
         super.gui();
@@ -46,6 +47,7 @@ public class LightsUI extends ClientUI{
         
     }
     
+    //matches buttons with action performed methods
     @Override
     public void actionPerformed(ActionEvent e){
         if (e.getSource() == reducing){

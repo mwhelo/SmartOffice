@@ -26,6 +26,7 @@ public class LightsService extends Service {
         ui = new ServiceUI(this, name);
     }
     
+    //perform action method for all buttons on gui
     @Override
     public void performAction(String a){
         if (a.equals("get_status")){
@@ -49,7 +50,7 @@ public class LightsService extends Service {
         }
         
     }
-        
+        //reduce energy class. if the watt usage goes above 14 the user can reduce it.
         class ReduceEnergy extends TimerTask{
             @Override
             public void run(){
@@ -59,11 +60,13 @@ public class LightsService extends Service {
             }
         }
         
+        //returns watts used to user
         @Override
         public String getStatus() {
         return "The lights are using " + wattsUsed + "w";
     }
         
+        //makes this class a main class
         public static void main(String[] args){
             new LightsService("SmartOffice");
         }

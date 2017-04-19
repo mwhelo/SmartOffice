@@ -25,6 +25,7 @@ public class PrinterClient extends Client {
         name = "Printer";
     }
     
+    //check queue method
     public void check(){
         if(!isChecking){
             String a = sendMessage(check);
@@ -38,6 +39,7 @@ public class PrinterClient extends Client {
         }
     }
     
+    //print documents method
     public void print(){
         if(!printing){
             String a = sendMessage(print);

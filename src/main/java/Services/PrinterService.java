@@ -25,6 +25,7 @@ public class PrinterService extends Service{
         ui = new ServiceUI(this, name);
     }
     
+    //perform action method for when user clicks buttons
     @Override
     public void performAction(String a){
         if(a.equals("get_status")){
@@ -44,7 +45,7 @@ public class PrinterService extends Service{
         }
     }
     
-    
+    //queue task class that returns whether they're documents in the printer queue
     class QueueTask extends TimerTask{
         @Override
         public void run(){
@@ -57,14 +58,14 @@ public class PrinterService extends Service{
         }
     }
     
+    //method returns amount of documents in queue to user.
     @Override
     public String getStatus(){
-        
     return "There are " + queueLength + " documents in the queue";
     
     }
     
-    
+    //makes this class a main class
     public static void main(String[] args){
         new PrinterService("SmartOffice's");
     }

@@ -30,12 +30,18 @@ public class ClientManager implements ServiceListener {
     private final ProjectorClient client2 = new ProjectorClient();
     private final MonitorClient client3 = new MonitorClient();
 
+    //service listeners added
     public ClientManager() {
         try {
+            //gets local host
             jmdns = JmDNS.create(InetAddress.getLocalHost());
+            //lights client service listener added
             jmdns.addServiceListener(client.getServiceType(), this);
+            //Printer client service listener added
             jmdns.addServiceListener(client1.getServiceType(), this);
+            //Projector client service listener added
             jmdns.addServiceListener(client2.getServiceType(), this);
+            //Monitor client service listener added
             jmdns.addServiceListener(client3.getServiceType(), this);
             
 
@@ -65,6 +71,7 @@ public class ClientManager implements ServiceListener {
         String type = arg0.getType();
         String name = arg0.getName();
         ServiceInfo newService = null;
+        //lights client
         if (client.getServiceType().equals(type) && client.hasMultiple()) {
             if (client.isCurrent(name)) {
                 ServiceInfo[] a = jmdns.list(type);
@@ -143,6 +150,7 @@ public class ClientManager implements ServiceListener {
         int port = arg0.getInfo().getPort();
         String type = arg0.getInfo().getType();
 
+        //lights client
         if (client.getServiceType().equals(type) && !client.isInitialized()) {
             client.setUp(address, port);
             ui.addPanel(client.returnUI(), client.getName());
@@ -192,6 +200,8 @@ public class ClientManager implements ServiceListener {
         
     }
 
+    
+    //makes this class a main class
     public static void main(String[] args) {
         new ClientManager();
 

@@ -30,6 +30,7 @@ public class LightsClient extends Client {
         name = "Smart Lights";
     }
     
+    //method for on button
     public void on(){
         if(!isOn){
             String a = sendMessage(on);
@@ -44,6 +45,7 @@ public class LightsClient extends Client {
         
     }
     
+    //method for reducing method
     public void reducing(){
         if (!isReducing){
             String a = sendMessage(reducing);
@@ -57,6 +59,7 @@ public class LightsClient extends Client {
         }
     }
     
+    //method for off button
     public void off(){
         if(!isOff){
             String a = sendMessage(off);
