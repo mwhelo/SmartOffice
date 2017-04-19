@@ -11,7 +11,7 @@ import java.util.TimerTask;
 
 /**
  *
- * @author x1243
+ * @author Ryan
  */
 public class ProjectorService extends Service {
     

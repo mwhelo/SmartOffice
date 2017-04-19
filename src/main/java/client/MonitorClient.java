@@ -27,6 +27,7 @@ public class MonitorClient extends Client{
         name = "monitor";
     }
     
+    //method for on button
     public void on(){
         if (!isOn){
             String a = sendMessage(on);
@@ -39,6 +40,7 @@ public class MonitorClient extends Client{
         }
     }
     
+    //method for channel up button
     public void channelUp(){
         if(!isUp){
             String a = sendMessage(up);
@@ -49,6 +51,7 @@ public class MonitorClient extends Client{
         }
     }
     
+    //method for channel down button
     public void channelDown(){
         if(!isDown){
             String a = sendMessage(down);

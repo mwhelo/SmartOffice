@@ -9,7 +9,7 @@ import clientui.ProjectorUI;
 
 /**
  *
- * @author x1243
+ * @author Ryan
  */
 public class ProjectorClient extends Client {
     
@@ -31,6 +31,7 @@ public class ProjectorClient extends Client {
         
     }
     
+    //method for on button
     public void on(){
         if (!isOn){
             String a = sendMessage(on);
@@ -43,6 +44,7 @@ public class ProjectorClient extends Client {
         }
     }
     
+    //method for off button
     public void off(){
         if(!isOff){
             String a = sendMessage(off);
@@ -55,6 +57,7 @@ public class ProjectorClient extends Client {
         }
     }
     
+    //method for hdmi button
     public void hdmi(){
         if(!isHdmi){
             String a = sendMessage(HDMI);
@@ -67,6 +70,7 @@ public class ProjectorClient extends Client {
         }
     }
     
+    //method for vga button
     public void vga(){
         if(!isVga){
             String a = sendMessage(VGA);

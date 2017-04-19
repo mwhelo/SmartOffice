@@ -27,6 +27,7 @@ public class MonitorUI extends ClientUI{
          gui();
      }
      
+     //gui method adds buttons to gui
      @Override
      public void gui(){
         super.gui();
@@ -43,6 +44,7 @@ public class MonitorUI extends ClientUI{
         add(new JButton[]{channelDown});
      }
      
+     //matches buttons to actionPerformed method
      @Override
      public void actionPerformed(ActionEvent e){
          if(e.getSource() == on){

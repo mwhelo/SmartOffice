@@ -11,7 +11,7 @@ import client.ProjectorClient;
 
 /**
  *
- * @author x1243
+ * @author Ryan
  */
 public class ProjectorUI  extends ClientUI {
     
@@ -28,6 +28,7 @@ public class ProjectorUI  extends ClientUI {
         gui();
     }
 
+    //gui method adds buttons to gui
     @Override
     public void gui() {
         super.gui();
@@ -46,6 +47,7 @@ public class ProjectorUI  extends ClientUI {
         
     }
 
+    //matches buttons to actionPerformed method
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == on) {
